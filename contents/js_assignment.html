@@ -2,51 +2,116 @@
 <html>
 
 <head>
-    <title>JS - Assignment</title>
+    <meta>
+    <title>JS - Exercise</title>
     <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #todoList {
-      list-style-type: none;
-      padding: 0;
-    }
-    #todoList li {
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    .completed {
-      text-decoration: line-through;
-      color: gray;
-    }
-  </style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            /* Fixed table width */
+            table-layout: fixed;
+            /* Important: forces fixed column width */
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            /* Hide overflow text */
+            text-overflow: ellipsis;
+            /* Add "..." when text too long */
+            white-space: nowrap;
+            /* Prevent line break */
+        }
+    </style>
 </head>
 
 <body>
 
     <button onclick="window.history.back();">Back</button>
-    
-    <h1>Assignment</h1>
+    <h1>Exercise</h1>
 
-    <h3>Create the simple to-do list with UI and functions below
+    <h3>Create an UI with functions as below
     </h3>
-    <img src="./../images/assignment-todo.png">
+    <img src="./../images/exercise_01.png">
     </p>
     <ul>
-        <li>One input text for user to input the todo information (task)
+        <li>'Add': to add new input first name and last name as new record in table
         </li>
-        <li>'Add' button: to add new item with text from input. Once new item added, clear input text.
+        <li>'Reset input': to clear values in 2 input texts
         </li>
-        <li>Once checkbox mark as checked, the detail of to-do item will be strikethrough
-        </li>
-        <li>
-            'Clear all todos' button: to clear all todo items from list
+        <li>'Reset table': to clear data rows in table
         </li>
     </ul>
 
+    </p>
 
-    <h3>Your solution for assignment</h3>
+    <h2>Your solution for exercise</h2>
 
+    <input id = 'txtfirstname' type="text" placeholder="Enter first name" >
+    <input id = 'txtlastname' type="text" placeholder="Enter last name" >
+    <input id = 'txt' type="button" value="Add" onclick="add();">
+    <input id = 'txt' type="button" value="Reset Input" onclick="clearinput();">
+    <input id = 'txt' type="button" value="Reset Table" onclick="resetall();">
+
+    <table id ="table" style="margin-top: 15px;"> 
+        <thead>
+            <tr>
+                <td>
+                    <h3>First name</h3>
+                </td>
+                <td>
+                    <h3>Last name</h3>
+                </td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <td>
+                    John
+                </td>
+                <td>
+                    Smith
+                </td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <td>
+                    Jo
+                </td>
+                <td>
+                    Bola
+                </td>
+            </tr>
+        </thead>     
+    </table>
+    <script>
+        function add() {
+            var firstname = document.getElementById('txtfirstname').value;
+            var lastname = document.getElementById('txtlastname').value;
+            var table = document.getElementById("table");
+            
+            var row1 = table.insertRow(-1);
+
+            var cell1 = row1.insertCell(0);
+            var cell2 = row1.insertCell(1);
+            cell1.innerHTML = firstname;
+            cell2.innerHTML = lastname;
+        
+        }
+
+        function clearinput() {
+            document.getElementById('txtfirstname').value = '';
+            document.getElementById('txtlastname').value = '';
+        }
+
+        function resetall() {
+            document.getElementById('table').innerHTML ="<tr> <td><h3>First name</h3></td> <td><h3>Last name</h3></td></tr>";
+        }
+    </script>
 </body>
 
 </html>

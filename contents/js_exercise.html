@@ -50,59 +50,68 @@
 
     <h2>Your solution for exercise</h2>
 
-    <input id="txtfirstname" type="text" placeholder="Enter first name">
-    <input id="txtlastname" type="text" placeholder="Enter last name">
+    <input id = 'txtfirstname' type="text" placeholder="Enter first name" >
+    <input id = 'txtlastname' type="text" placeholder="Enter last name" >
+    <input id = 'txt' type="button" value="Add" onclick="add();">
+    <input id = 'txt' type="button" value="Reset Input" onclick="clearinput();">
+    <input id = 'txt' type="button" value="Reset Table" onclick="resetall();">
 
-    <input id="btnadd" type="button" value="Add" onclick="add()">
-    <input id="btnreset" type="button" value="Reset input" onclick="clearinput()">
-    <input id="btnresett" type="button" value="Reset Table">
-
-    <table>
+    <table id ="table" style="margin-top: 15px;"> 
         <thead>
             <tr>
                 <td>
-                    first name
+                    <h3>First name</h3>
                 </td>
                 <td>
-                    last name
+                    <h3>Last name</h3>
                 </td>
             </tr>
         </thead>
-        <tbody>
+        <thead>
             <tr>
                 <td>
-                    john
+                    John
                 </td>
                 <td>
-                    smith
+                    Smith
                 </td>
             </tr>
-        </tbody>
-        <tbody>
+        </thead>
+        <thead>
             <tr>
                 <td>
-                    jo
+                    Jo
                 </td>
                 <td>
-                    bola
+                    Bola
                 </td>
             </tr>
-        </tbody>
-
+        </thead>     
     </table>
-<script>
-    function add() {
-        firstname = document.getElementById('txtfirstname').value;
-        lastname = document.getElementById('txtlastname').value;
-    }
-    function clearinput() {
-        document.getElementById('txtfirstname').value="";
-        lastname = document.getElementById('txtlastname').value="";
-    }
-    
+    <script>
+        function add() {
+            var firstname = document.getElementById('txtfirstname').value;
+            var lastname = document.getElementById('txtlastname').value;
+            var table = document.getElementById("table");
+            
+            var row1 = table.insertRow(-1);
 
-</script>
+            var cell1 = row1.insertCell(0);
+            var cell2 = row1.insertCell(1);
+            cell1.innerHTML = firstname;
+            cell2.innerHTML = lastname;
+        
+        }
 
+        function clearinput() {
+            document.getElementById('txtfirstname').value = '';
+            document.getElementById('txtlastname').value = '';
+        }
+
+        function resetall() {
+            document.getElementById('table').innerHTML ="<tr> <td><h3>First name</h3></td> <td><h3>Last name</h3></td></tr>";
+        }
+    </script>
 </body>
 
 </html>
